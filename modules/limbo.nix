@@ -12,6 +12,7 @@
     jetbrains.rider
     ldtk
     wl-clipboard
+    kicad-small
   ];
 
   virtualisation.docker.enable = true;

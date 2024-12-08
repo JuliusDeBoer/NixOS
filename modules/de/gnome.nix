@@ -1,6 +1,6 @@
 # https://nixos.wiki/wiki/GNOME
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 {
   services.xserver = {
     enable = true;

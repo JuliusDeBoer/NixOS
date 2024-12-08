@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
-  protonGE = pkgs.stdenv.mkDerivation rec {
+  protonGE = pkgs.stdenv.mkDerivation {
     # TODO: Figure out how to auto enable proton for all video games
     name = "proton-ge-custom";
 
@@ -21,7 +21,7 @@ in
   programs.steam.enable = true;
 
   home-manager.users.julius =
-    { pkgs, ... }:
+    { ... }:
     {
       home.packages = [
         protonGE

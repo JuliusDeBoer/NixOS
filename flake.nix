@@ -49,7 +49,7 @@
           ./hosts/T480.nix
           inputs.home-manager.nixosModules.default
           (
-            { pkgs, ... }:
+            { ... }:
             {
               nixpkgs.overlays = [
                 inputs.rust-overlay.overlays.default
