@@ -41,14 +41,14 @@
         ball = "push --force-with-lease";
       };
 
+      programs.fzf = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+
       programs.zsh = {
         enable = true;
-        initExtra = ''
-          bindkey -v
-          bindkey '^R' history-incremental-search-backward
-
-          ${pkgs.hellcomp}/bin/hellcomp
-        '';
+        initExtra = "${pkgs.hellcomp}/bin/hellcomp";
         historySubstringSearch.enable = true;
         plugins = [
           {
