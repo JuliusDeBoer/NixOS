@@ -44,6 +44,7 @@
       programs.zsh = {
         enable = true;
         initExtra = "${pkgs.hellcomp}/bin/hellcomp";
+        historySubstringSearch.enable = true;
         plugins = [
           {
             name = "zsh-nix-shell";

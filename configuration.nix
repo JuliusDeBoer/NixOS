@@ -7,6 +7,7 @@
 {
   imports = [
     ./modules/de/gnome.nix
+    ./modules/dns.nix
     ./modules/git.nix
     ./modules/grub.nix
     ./modules/i18n.nix
@@ -14,7 +15,6 @@
     ./modules/shell.nix
     ./modules/steam.nix
   ];
-  services.resolved.enable = true;
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
@@ -31,8 +31,6 @@
     "nix-command"
     "flakes"
   ];
-
-  networking.networkmanager.enable = true;
 
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
