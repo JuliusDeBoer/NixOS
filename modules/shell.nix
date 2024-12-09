@@ -43,7 +43,12 @@
 
       programs.zsh = {
         enable = true;
-        initExtra = "${pkgs.hellcomp}/bin/hellcomp";
+        initExtra = ''
+          bindkey -v
+          bindkey '^R' history-incremental-search-backward
+
+          ${pkgs.hellcomp}/bin/hellcomp
+        '';
         historySubstringSearch.enable = true;
         plugins = [
           {
