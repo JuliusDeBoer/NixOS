@@ -15,7 +15,7 @@
     };
 
     zen-browser = {
-      url = "github:MarceColl/zen-browser-flake/e6ab73f405e9a2896cce5956c549a9cc359e5fcc";
+      url = "github:0xc000022070/zen-browser-flake/b2a4aeaad1cdb4a0d8901313d6388a8b4bf2c59d";
     };
 
     hellcomp.url = "github:JuliusDeBoer/HellComp/refs/tags/stable";

@@ -145,7 +145,9 @@
     # Fonts
     geist-font
 
-    (rust-bin.selectLatestNightlyWith (toolchain: toolchain.default))
+    (rust-bin.nightly.latest.default.override {
+      targets = ["wasm32-unknown-unknown"];
+    })
     zen.specific
   ];
 
