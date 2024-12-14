@@ -34,6 +34,7 @@
         c = "clear";
         q = "exit";
         la = "ls -lha";
+        zedq = "zeditor . && exit";
 
         # Funny
         git = "git ";

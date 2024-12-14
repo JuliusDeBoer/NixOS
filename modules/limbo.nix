@@ -10,9 +10,10 @@
     dotnetCorePackages.dotnet_8.sdk
     godot_4
     jetbrains.rider
-    ldtk
-    wl-clipboard
     kicad-small
+    ldtk
+    rust-analyzer
+    wl-clipboard
   ];
 
   virtualisation.docker.enable = true;
