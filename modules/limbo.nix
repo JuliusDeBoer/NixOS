@@ -7,9 +7,7 @@
   environment.systemPackages = with pkgs; [
     beekeeper-studio
     docker
-    dotnetCorePackages.dotnet_8.sdk
     godot_4
-    jetbrains.rider
     kicad-small
     ldtk
     rust-analyzer
