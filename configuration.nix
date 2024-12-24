@@ -3,10 +3,9 @@
   lib,
   ...
 }:
-
 {
   imports = [
-    ./modules/de/gnome.nix
+    ./modules/de/kde.nix
     ./modules/dns.nix
     ./modules/git.nix
     ./modules/grub.nix
@@ -33,6 +32,14 @@
   ];
 
   hardware.pulseaudio.enable = false;
+
+  # TODO(Julius): Move bluetooth stuff to a seperate file
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
