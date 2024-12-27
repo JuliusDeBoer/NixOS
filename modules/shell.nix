@@ -17,16 +17,16 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
+        ani-cli
         cyme
         fd
         file
+        hellcomp
         p7zip
         ripgrep
         tlrc
         tmux
         zoxide
-
-        hellcomp
       ];
 
       home.shellAliases = {
