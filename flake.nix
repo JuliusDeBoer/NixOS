@@ -15,10 +15,14 @@
     };
 
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake/b2a4aeaad1cdb4a0d8901313d6388a8b4bf2c59d";
+      url = "github:0xc000022070/zen-browser-flake/cea051b6f908304f4af6484b14a532c729f0cc34";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hellcomp.url = "github:JuliusDeBoer/HellComp/refs/tags/stable";
+    hellcomp = {
+      url = "github:JuliusDeBoer/HellComp/refs/tags/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
