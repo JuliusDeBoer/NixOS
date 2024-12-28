@@ -75,6 +75,8 @@
         httpie
         onefetch
 
+        ghostty.ghostty-releasefast
+
         zed-editor
 
         chromium
@@ -113,6 +115,11 @@
         libreoffice
       ];
 
+      xdg.configFile."ghostty/config".text = ''
+        font-family = "Iosevka Term"
+        gtk-titlebar = false
+      '';
+
       programs.vim = {
         enable = true;
         settings = {
@@ -124,7 +131,7 @@
       };
 
       programs.wezterm = {
-        enable = true;
+        # enable = true;
         enableBashIntegration = false;
         enableZshIntegration = true;
         extraConfig = ''
@@ -155,7 +162,8 @@
     (rust-bin.nightly.latest.default.override {
       targets = ["wasm32-unknown-unknown"];
     })
-    zen.specific
+
+    zen
   ];
 
   system.stateVersion = "23.05";
