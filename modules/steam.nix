@@ -2,7 +2,7 @@
 
 let
   protonGE = pkgs.stdenv.mkDerivation {
-    # TODO: Figure out how to auto enable proton for all video games
+    # TODO(Julius): Figure out how to auto enable proton for all video games
     name = "proton-ge-custom";
 
     src = fetchTarball {
@@ -10,7 +10,7 @@ let
       sha256 = "0ymmzjmpywlr9pd5y326xh8l43wh6vz6yv58qn2wdz4ikr3j0srq";
     };
 
-    # TODO: Use the xdg variables for this?
+    # TODO(Julius): Use the xdg variables for this?
     installPhase = ''
       mkdir -p $out
       cp -r * $out
