@@ -26,7 +26,6 @@
 
     ghostty = {
       url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
