@@ -23,10 +23,6 @@
       url = "github:JuliusDeBoer/HellComp/refs/tags/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
   };
 
   outputs =
@@ -37,7 +33,6 @@
       overlay = final: prev: {
         hellcomp = inputs.hellcomp.packages."${system}".default;
         zen = inputs.zen-browser.packages."${system}".default;
-        ghostty = inputs.ghostty.packages."${system}";
       };
 
       pkgs = import nixpkgs {

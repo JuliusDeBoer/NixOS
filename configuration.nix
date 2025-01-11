@@ -75,7 +75,7 @@
         httpie
         onefetch
 
-        ghostty.ghostty-releasefast
+        ghostty
 
         zed-editor
 
