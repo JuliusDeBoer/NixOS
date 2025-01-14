@@ -3,16 +3,19 @@
   lib,
   ...
 }:
+let
+  modules = import ./modules/default.nix { inherit lib pkgs; };
+in
 {
   imports = [
-    ./modules/de/kde.nix
-    ./modules/dns.nix
-    ./modules/git.nix
-    ./modules/grub.nix
-    ./modules/i18n.nix
-    ./modules/limbo.nix
-    ./modules/shell.nix
-    ./modules/steam.nix
+    modules.de.kde
+    modules.dns
+    modules.git
+    modules.grub
+    modules.i18n
+    modules.limbo
+    modules.shell
+    modules.steam
   ];
 
   nixpkgs.config.allowUnfreePredicate =
@@ -160,7 +163,7 @@
     geist-font
 
     (rust-bin.nightly.latest.default.override {
-      targets = ["wasm32-unknown-unknown"];
+      targets = [ "wasm32-unknown-unknown" ];
     })
 
     zen
