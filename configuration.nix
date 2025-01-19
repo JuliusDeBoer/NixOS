@@ -7,34 +7,24 @@ let
   modules = import ./modules/default.nix { inherit lib pkgs; };
 in
 {
-  imports = [
-    modules.de.kde
-    modules.dns
-    modules.git
-    modules.grub
-    modules.i18n
-    modules.limbo
-    modules.shell
-    modules.steam
+  imports = with modules; [
+    de.kde
+    dns
+    git
+    grub
+    i18n
+    limbo
+    shell
+    steam
+    unfree
   ];
-
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-unwrapped"
-      "steam-original"
-      "spotify"
-      "discord"
-      "rider"
-    ];
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # TODO(Julius): Move bluetooth stuff to a seperate file
   hardware.bluetooth = {

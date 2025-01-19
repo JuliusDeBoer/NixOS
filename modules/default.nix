@@ -6,7 +6,7 @@ let
       ${lib.strings.removeSuffix ".nix" name} =
         if name == "default.nix" then
           # NOTE(Julius): Dont include this script. I guess you could. But if
-          #               you are you are doing something else wrong
+          #               you are you are doing something else wrong.
           throw "Cannot use default.nix as a standalone module"
 
         else if value == "regular" then

@@ -2,7 +2,10 @@
 {
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
+
+  # TODO(Julius): Allow hosts to choose if they want to enable OS prober
   boot.loader.grub.useOSProber = true;
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.theme = "${
     (fetchTarball {
