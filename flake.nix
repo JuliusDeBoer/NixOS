@@ -23,6 +23,8 @@
       url = "github:JuliusDeBoer/HellComp/refs/tags/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
@@ -63,8 +65,11 @@
           )
         ];
       };
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-      devShell.x86_64-linux = pkgs.mkShell {
+      formatter.${system} =
+        (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
+        checks.${system} =
+        (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.check self;
+      devShell.${system} = pkgs.mkShell {
         buildInputs = with pkgs; [
           nixd
           nil
