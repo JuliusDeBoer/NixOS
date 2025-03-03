@@ -5,8 +5,9 @@
 # TODO:
 # - Look into using bspwm with xfce
 # - Put some stuff (I.E ly and pipewire) into a seperate module
-# - Look into using TBSM
+# - Look into using Lemurs (aka write my own package for that)
 # - Screenshots with grim
+# - Do something about the font
 
 { ... }:
 {
@@ -29,6 +30,6 @@
     #               that xfwm4 is not ported to Wayland. Which means that I do
     #               not have access to keyboard shortcuts. Which is quite
     #               important to my workflow. Soooo... :(
-    enableWaylandSession = false;
+    enableWaylandSession = true;
   };
 }

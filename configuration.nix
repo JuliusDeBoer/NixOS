@@ -17,6 +17,7 @@ in
     shell
     steam
     unfree
+    zed
   ];
 
   nix.settings.experimental-features = [
@@ -70,8 +71,6 @@ in
 
         ghostty
 
-        zed-editor
-
         chromium
 
         spotify
@@ -121,25 +120,6 @@ in
         };
         # Return to monke
         defaultEditor = true;
-      };
-
-      programs.wezterm = {
-        # enable = true;
-        enableBashIntegration = false;
-        enableZshIntegration = true;
-        extraConfig = ''
-          local wezterm = require 'wezterm'
-          local config = wezterm.config_builder()
-
-          config.color_scheme = 'Tokyo Night'
-
-          config.font = wezterm.font('Iosevka Term')
-          config.front_end = "WebGpu"
-          config.enable_tab_bar = false
-          enable_wayland = true
-
-          return config
-        '';
       };
     };
 
