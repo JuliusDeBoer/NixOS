@@ -8,7 +8,7 @@ let
 in
 {
   imports = with modules; [
-    de.kde
+    de.xfce
     dns
     git
     grub
