@@ -65,10 +65,8 @@
           )
         ];
       };
-      formatter.${system} =
-        (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
-        checks.${system} =
-        (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.check self;
+      formatter.${system} = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
+      checks.${system} = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.check self;
       devShell.${system} = pkgs.mkShell {
         buildInputs = with pkgs; [
           nixd
