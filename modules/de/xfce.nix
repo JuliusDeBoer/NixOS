@@ -22,14 +22,25 @@
     pulse.enable = true;
   };
 
+  # TODO(Julius): This doesnt seem to work?
   security.pam.services.gdm.enableGnomeKeyring = true;
 
-  services.xserver.desktopManager.xfce = {
+  services.xserver = {
     enable = true;
-    # TODO(Julius): Enable Wayland. The main problem right (2025-03-03) now is
-    #               that xfwm4 is not ported to Wayland. Which means that I do
-    #               not have access to keyboard shortcuts. Which is quite
-    #               important to my workflow. Soooo... :(
-    enableWaylandSession = true;
+    desktopManager.xfce = {
+      enable = true;
+      # TODO(Julius): Enable Wayland. The main problem right (2025-03-03) now is
+      #               that xfwm4 is not ported to Wayland. Which means that I do
+      #               not have access to keyboard shortcuts. Which is quite
+      #               important to my workflow. Soooo... :(
+      enableWaylandSession = false;
+    };
   };
+
+  home-manager.users.julius =
+      { ... }:
+      {
+        xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".source = ./xfce_keyboard.xml;
+        xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
+      };
 }
