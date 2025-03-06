@@ -6,7 +6,10 @@
 {
   environment.systemPackages = with pkgs; [
     beekeeper-studio
+    btop
     docker
+    drawio
+    fastfetch
     godot_4
     kicad-small
     ldtk
