@@ -9,7 +9,7 @@
 # - Screenshots with grim
 # - Do something about the font
 
-{ ... }:
+{ pkgs, ... }:
 {
   services.displayManager.ly.enable = true;
 
@@ -24,6 +24,10 @@
 
   # TODO(Julius): This doesnt seem to work?
   security.pam.services.gdm.enableGnomeKeyring = true;
+
+  environment.systemPackages = with pkgs; [
+    bemenu
+  ];
 
   services.xserver = {
     enable = true;
@@ -40,6 +44,9 @@
   home-manager.users.julius =
     { ... }:
     {
+      # TODO(Julius): Do some sort of templating to allow for mutliple programs
+      #               (E.G ghostty, wezterm). But thats after the whole "higher
+      #               level config" thingy.
       xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".source =
         ./xfce_keyboard.xml;
       xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
