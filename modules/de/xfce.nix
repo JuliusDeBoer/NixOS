@@ -38,9 +38,10 @@
   };
 
   home-manager.users.julius =
-      { ... }:
-      {
-        xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".source = ./xfce_keyboard.xml;
-        xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
-      };
+    { ... }:
+    {
+      xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".source =
+        ./xfce_keyboard.xml;
+      xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
+    };
 }
