@@ -1,4 +1,4 @@
-{ pkgs, lib }:
+{ lib }:
 let
   transformFiles =
     dir:
@@ -10,7 +10,7 @@ let
           throw "Cannot use default.nix as a standalone module"
 
         else if value == "regular" then
-          import /${dir}/${name} { inherit pkgs lib; }
+          /${dir}/${name}
 
         else if value == "directory" then
           transformFiles ./${name}/.

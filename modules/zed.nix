@@ -14,7 +14,7 @@
           version = "2";
         };
 
-        theme = "Ayu Dark";
+        theme = "Oxocarbon Dark (IBM Carbon)";
         show_edit_predictions = false;
 
         telemetry = {

@@ -4,7 +4,7 @@
   ...
 }:
 let
-  modules = import ./modules/default.nix { inherit lib pkgs; };
+  modules = import ./modules/default.nix { inherit lib; };
 in
 {
   imports = with modules; [
@@ -37,6 +37,8 @@ in
       options = "--delete-older-than 7d";
     };
   };
+
+  global.terminal = "${pkgs.ghostty}/bin/ghostty";
 
   services.pulseaudio.enable = false;
 
@@ -123,6 +125,7 @@ in
 
       xdg.configFile."ghostty/config".text = ''
         font-family = "Iosevka Term"
+        theme = "Oxocarbon"
         gtk-titlebar = false
       '';
 

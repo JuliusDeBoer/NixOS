@@ -43,6 +43,8 @@
           allowUnfree = false;
         };
       };
+
+      treefmt_config = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config;
     in
     {
       nixosConfigurations.T480 = nixpkgs.lib.nixosSystem {
@@ -65,8 +67,8 @@
           )
         ];
       };
-      formatter.${system} = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.wrapper;
-      checks.${system} = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config.build.check self;
+      formatter.${system} = treefmt_config.build.wrapper;
+      checks.${system} = treefmt_config.build.check self;
       devShell.${system} = pkgs.mkShell {
         buildInputs = with pkgs; [
           nixd
