@@ -38,7 +38,6 @@ in
     };
   };
 
-
   services.pulseaudio.enable = false;
 
   # TODO(Julius): Move bluetooth stuff to a seperate file
