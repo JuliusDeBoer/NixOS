@@ -10,12 +10,14 @@ in
   imports = with modules; [
     de.xfce
     dns
+    fonts
     git
     grub
     i18n
     limbo
     shell
     steam
+    terminal
     unfree
     zed
   ];
@@ -38,7 +40,7 @@ in
     };
   };
 
-  global.terminal = "${pkgs.ghostty}/bin/ghostty";
+  global.terminal = "ghostty";
 
   services.pulseaudio.enable = false;
 
@@ -85,8 +87,6 @@ in
         httpie
         onefetch
 
-        ghostty
-
         chromium
 
         spotify
@@ -95,39 +95,8 @@ in
         gimp
         inkscape
 
-        (iosevka.override {
-          set = "term";
-          privateBuildPlan = {
-            family = "Iosevka Term";
-            spacing = "term";
-            serifs = "sans";
-            noCvSs = true;
-            exportGlyphNames = false;
-            ligations = {
-              inherits = "dlig";
-            };
-            weights.Regular = {
-              shape = 400;
-              menu = 400;
-              css = 400;
-            };
-            widths.Normal = {
-              shape = 500;
-              menu = 5;
-              css = "normal";
-            };
-            webfontFormats = "TTF";
-          };
-        })
-
         libreoffice
       ];
-
-      xdg.configFile."ghostty/config".text = ''
-        font-family = "Iosevka Term"
-        theme = "Oxocarbon"
-        gtk-titlebar = false
-      '';
 
       programs.vim = {
         enable = true;
@@ -145,9 +114,6 @@ in
     git
     openssh
     bat
-
-    # Fonts
-    geist-font
 
     (rust-bin.nightly.latest.default.override {
       targets = [ "wasm32-unknown-unknown" ];

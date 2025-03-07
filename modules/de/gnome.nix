@@ -1,6 +1,9 @@
 # https://nixos.wiki/wiki/GNOME
 
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  cfg = config.global;
+in
 {
   services.xserver = {
     enable = true;
@@ -57,7 +60,7 @@
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/open_terminal" = {
           name = "Open terminal";
           binding = "<Super>Return";
-          command = "wezterm";
+          command = cfg.generated.terminalExe;
         };
       };
     };
