@@ -40,7 +40,6 @@
 
   programs.gnupg.agent = {
     enable = true;
-    # TODO: Dont use curses
-    pinentryPackage = pkgs.pinentry-curses;
+    pinentryPackage = pkgs.pinentry-pinentry-tty;
   };
 }
