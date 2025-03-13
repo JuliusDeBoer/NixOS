@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735700933,
-        "narHash": "sha256-NQYz1EbWiuQH5iSWLM1/+wJd/Dd379oIBeaV5rXk+KI=",
+        "lastModified": 1741871204,
+        "narHash": "sha256-ydcO+MxCXEkBxm/ALc5QMQkyIsQjmwzPzazivyyC6t4=",
         "owner": "JuliusDeBoer",
         "repo": "HellComp",
-        "rev": "5b2beb145b6a8cb5c4cad5b8937ec44ff3f045ab",
+        "rev": "3bd4c61213b37e87f37d195d6c10a471402db62c",
         "type": "github"
       },
       "original": {
@@ -28,11 +28,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741785612,
-        "narHash": "sha256-3NFLoC7AdenUJQHzPiHDYVBEgEIH6mGSbdx7GFbRURA=",
+        "lastModified": 1741791118,
+        "narHash": "sha256-4Y427uj0eql4yRU5rely3EcOlB9q457UDbG9omPtXiA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "144f13f535be35c906241043f6bfcf21c1c419a0",
+        "rev": "18780912345970e5b546b1b085385789b6935a83",
         "type": "github"
       },
       "original": {
@@ -90,11 +90,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1741746673,
-        "narHash": "sha256-7L4J5F96ku6DBkbEwxNdPZF41bAEhMMoHUlZD/jGYq4=",
+        "lastModified": 1741833135,
+        "narHash": "sha256-HUtFcF4NLwvu7CAowWgqCHXVkNj0EOc/W6Ism4biV6I=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "7af16cbd1464fddde8ad0c4ed7baaa2292445ba4",
+        "rev": "f3cd1e0feb994188fe3ad9a5c3ab021ed433b8c8",
         "type": "github"
       },
       "original": {
