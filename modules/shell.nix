@@ -13,22 +13,23 @@
     shell = pkgs.zsh;
   };
 
+  environment.systemPackages = with pkgs; [
+    ani-cli
+    cyme
+    fd
+    file
+    hellcomp
+    p7zip
+    ripgrep
+    tlrc
+    tmux
+    uutils-coreutils-noprefix
+    zoxide
+  ];
+
   home-manager.users.julius =
     { pkgs, ... }:
     {
-      home.packages = with pkgs; [
-        ani-cli
-        cyme
-        fd
-        file
-        hellcomp
-        p7zip
-        ripgrep
-        tlrc
-        tmux
-        zoxide
-      ];
-
       home.shellAliases = {
         md = "mkdir";
         c = "clear";
