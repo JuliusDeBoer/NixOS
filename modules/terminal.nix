@@ -1,8 +1,13 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   options.global = {
     terminal = lib.mkOption {
-      type = lib.types.nullOr (lib.types.enum ["ghostty"]);
+      type = lib.types.nullOr (lib.types.enum [ "ghostty" ]);
       description = "The primary terminal emulator";
     };
 
@@ -20,13 +25,13 @@
     global.generated.terminalExe = "${pkgs.ghostty}/bin/ghostty";
 
     home-manager.users.julius =
-    { ... }:
-    {
-      xdg.configFile."ghostty/config".text = ''
-        font-family = "Iosevka Term"
-        theme = "Oxocarbon"
-        gtk-titlebar = false
-      '';
-    };
+      { ... }:
+      {
+        xdg.configFile."ghostty/config".text = ''
+          font-family = "Iosevka Term"
+          theme = "Oxocarbon"
+          gtk-titlebar = false
+        '';
+      };
   };
 }

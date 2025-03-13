@@ -47,10 +47,11 @@ in
   };
 
   home-manager.users.julius =
-  { ... }:
-  {
-    xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".text =
-    builtins.replaceStrings ["TERMINAL_EMULATOR"] [cfg.generated.terminalExe] (builtins.readFile ./xfce_keyboard.xml);
-    xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
-  };
+    { ... }:
+    {
+      xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".text =
+        builtins.replaceStrings [ "TERMINAL_EMULATOR" ] [ cfg.generated.terminalExe ]
+          (builtins.readFile ./xfce_keyboard.xml);
+      xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
+    };
 }
