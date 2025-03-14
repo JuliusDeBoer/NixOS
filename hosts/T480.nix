@@ -28,6 +28,11 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
+  fileSystems."/mnt/Antimony" = {
+    device = "/dev/disk/by-label/Antimony";
+    fsType = "ntfs";
+  };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/a08be8a4-2edb-4f47-a90b-e5420efad52d";
     fsType = "ext4";
