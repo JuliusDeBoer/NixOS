@@ -31,6 +31,10 @@
   fileSystems."/mnt/Antimony" = {
     device = "/dev/disk/by-label/Antimony";
     fsType = "ntfs";
+    options = [
+      "uid=${builtins.toString config.users.users.julius.uid}"
+      "nofail"
+    ];
   };
 
   fileSystems."/" = {

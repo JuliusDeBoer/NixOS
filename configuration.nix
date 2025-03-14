@@ -62,6 +62,8 @@ in
   users.users.julius = {
     isNormalUser = true;
     description = "Julius";
+    # NOTE(Julius): Set explicit user id for FS permissions.
+    uid = 1000;
     extraGroups = [
       "docker"
       "networkmanager"
