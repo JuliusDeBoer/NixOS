@@ -31,6 +31,7 @@ in
   environment.systemPackages = with pkgs; [
     bemenu
     xfce.xfce4-pulseaudio-plugin
+    xfce.xfce4-volumed-pulse
   ];
 
   services.xserver = {
