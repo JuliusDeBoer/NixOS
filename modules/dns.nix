@@ -7,9 +7,11 @@
     ];
     networkmanager = {
       enable = true;
-      dns = "none";
+      # dns = "none";
     };
   };
+
+  services.resolved.enable = true;
 
   # NOTE(Julius): Maybe look into using dns over tls instead of dnscrypt?
   services.dnscrypt-proxy2 = {
