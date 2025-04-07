@@ -19,6 +19,7 @@
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;
+  programs.nh.enable = true;
 
   home-manager.users.julius =
     { ... }:
