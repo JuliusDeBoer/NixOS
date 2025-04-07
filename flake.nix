@@ -68,7 +68,9 @@
         ];
       };
       formatter.${system} = treefmt_config.build.wrapper;
-      checks.${system} = treefmt_config.build.check self;
+      checks.${system} = {
+        formatting = treefmt_config.build.check self;
+      };
       devShell.${system} = pkgs.mkShell {
         buildInputs = with pkgs; [
           nixd
