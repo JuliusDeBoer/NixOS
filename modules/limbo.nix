@@ -5,6 +5,7 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    blender
     btop
     docker
     drawio
