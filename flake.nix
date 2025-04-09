@@ -20,7 +20,7 @@
     };
 
     hellcomp = {
-      url = "github:JuliusDeBoer/HellComp/refs/tags/stable";
+      url = "github:JuliusDeBoer/HellComp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
