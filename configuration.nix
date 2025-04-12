@@ -9,6 +9,7 @@ in
 {
   imports = with modules; [
     de.xfce
+    development
     dns
     fonts
     git
@@ -81,12 +82,7 @@ in
       home.stateVersion = "24.05";
 
       home.packages = with pkgs; [
-        clang
-        nodejs
-
-        pnpm
         openssh
-        httpie
         onefetch
 
         chromium
