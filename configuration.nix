@@ -102,6 +102,10 @@ in
           number = true;
           relativenumber = true;
         };
+        extraConfig = "
+          set nofixeol
+          set nofixendofline
+        ";
         # Return to monke
         defaultEditor = true;
       };

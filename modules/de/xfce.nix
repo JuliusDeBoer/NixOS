@@ -34,6 +34,10 @@ in
     xfce.xfce4-volumed-pulse
   ];
 
+  environment.xfce.excludePackages = with pkgs; [
+    xfce.xfce4-panel
+  ];
+
   services.xserver = {
     # NOTE(Julius): When Wayland gets enabled this *SHOULD* be disabled.
     enable = true;
@@ -53,6 +57,5 @@ in
       xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml".text =
         builtins.replaceStrings [ "TERMINAL_EMULATOR" ] [ cfg.generated.terminalExe ]
           (builtins.readFile ./xfce_keyboard.xml);
-      xdg.configFile."xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml".source = ./xfce_panel.xml;
     };
 }
