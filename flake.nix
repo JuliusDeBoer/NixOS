@@ -24,6 +24,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+
     treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
@@ -55,6 +57,7 @@
         modules = [
           ./configuration.nix
           ./hosts/T480.nix
+          inputs.spicetify-nix.nixosModules.default
           inputs.home-manager.nixosModules.default
           (
             { ... }:

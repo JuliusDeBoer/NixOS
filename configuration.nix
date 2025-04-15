@@ -17,6 +17,7 @@ in
     i18n
     limbo
     shell
+    spicetify
     steam
     terminal
     unfree
@@ -87,7 +88,6 @@ in
 
         chromium
 
-        spotify
         vesktop
 
         gimp
