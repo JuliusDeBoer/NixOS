@@ -7,6 +7,9 @@
   boot.loader.grub.useOSProber = true;
 
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Theme
+  stylix.targets.grub.enable = false;
   boot.loader.grub.theme = "${
     (fetchTarball {
       url = "https://github.com/krypciak/crossgrub/releases/download/1.0.0/crossgrub.tar.gz";

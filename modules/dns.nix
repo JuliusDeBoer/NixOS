@@ -11,6 +11,12 @@
     };
   };
 
+  #TODO(Julius): This doesnt fit here. We are donig it anyway.
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 3020 ];
+  };
+
   services.resolved.enable = true;
 
   # NOTE(Julius): Maybe look into using dns over tls instead of dnscrypt?

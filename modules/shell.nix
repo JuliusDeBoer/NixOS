@@ -50,7 +50,7 @@
 
       programs.zsh = {
         enable = true;
-        initExtra = "${pkgs.hellcomp}/bin/hellcomp";
+        initContent = "${pkgs.hellcomp}/bin/hellcomp";
         historySubstringSearch.enable = true;
         plugins = [
           {
@@ -64,11 +64,6 @@
             };
           }
         ];
-      };
-
-      programs.direnv = {
-        enable = true;
-        enableZshIntegration = true;
       };
 
       programs.starship = {

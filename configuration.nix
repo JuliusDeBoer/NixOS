@@ -19,6 +19,7 @@ in
     shell
     spicetify
     steam
+    stylix
     terminal
     unfree
     zed
@@ -41,6 +42,8 @@ in
       options = "--delete-older-than 7d";
     };
   };
+
+  boot.tmp.cleanOnBoot = true;
 
   global.terminal = "ghostty";
 
@@ -95,6 +98,12 @@ in
 
         libreoffice
       ];
+
+      programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+        nix-direnv.enable = true;
+      };
 
       programs.vim = {
         enable = true;

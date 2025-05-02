@@ -15,7 +15,7 @@
     };
 
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
+      url = "github:0xc000022070/zen-browser-flake/6a9daeae2f8564a23db2ca9d8e4fcad1686daa51";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -25,8 +25,8 @@
     };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs =
@@ -57,6 +57,7 @@
         modules = [
           ./configuration.nix
           ./hosts/T480.nix
+          inputs.stylix.nixosModules.stylix
           inputs.spicetify-nix.nixosModules.default
           inputs.home-manager.nixosModules.default
           (
