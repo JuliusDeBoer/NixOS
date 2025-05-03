@@ -15,6 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     ani-cli
+    busybox
     cyme
     fd
     file
@@ -23,7 +24,6 @@
     ripgrep
     tlrc
     tmux
-    uutils-coreutils-noprefix
     zoxide
   ];
 
