@@ -11,14 +11,15 @@
     drawio
     fastfetch
     godot_4
+    jq
     kicad-small
     ldtk
+    obs-studio
     pgadmin4-desktopmode
     polybar
     rust-analyzer
+    ticker
     wl-clipboard
-
-    obs-studio
   ];
 
   virtualisation.docker.enable = true;
