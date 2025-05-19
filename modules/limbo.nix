@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     blender
     btop
+    calibre
     docker
     drawio
     fastfetch
@@ -14,6 +15,7 @@
     jq
     kicad-small
     ldtk
+    nicotine-plus
     obs-studio
     pgadmin4-desktopmode
     polybar

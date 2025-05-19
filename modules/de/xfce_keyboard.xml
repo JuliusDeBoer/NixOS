@@ -129,6 +129,11 @@
                 value="TERMINAL_EMULATOR"
             />
       <property name="&lt;Alt&gt;space" type="string" value="bemenu-run -b" />
+      <property
+                name="&lt;Super&gt;l"
+                type="string"
+                value="xflock4"
+            />
     </property>
   </property>
   <property name="xfwm4" type="empty">

@@ -17,6 +17,7 @@
     ani-cli
     busybox
     cyme
+    dysk
     fd
     file
     hellcomp
