@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     ani-cli
     busybox
+    comma
     cyme
     dysk
     fd
