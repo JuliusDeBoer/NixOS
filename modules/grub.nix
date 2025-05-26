@@ -19,7 +19,7 @@
       rev = "4d9cd37baf56c4f5510cc4ff61be278f11077c81";
       hash = "sha256-XVzYDwJM7Q9DvdF4ZOqayjiYpasUeMhAWWcXtnhJ0WQ=";
     }
-    }/yorha-1920x1080";
+  }/yorha-1920x1080";
 
   # CrossCode theme
   # boot.loader.grub.theme = "${

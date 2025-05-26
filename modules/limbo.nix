@@ -2,7 +2,13 @@
 #
 # A place for packages that are semi-permanent.
 
-{ pkgs, config, boot, security, ... }:
+{
+  pkgs,
+  config,
+  boot,
+  security,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     blender
