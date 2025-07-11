@@ -5,6 +5,7 @@
     enable = true;
     interactiveShellInit = ''
       eval "$(zoxide init zsh)"
+      eval "$(atuin init zsh --disable-up-arrow)"
     '';
   };
 
@@ -15,6 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     ani-cli
+    atuin
     busybox
     comma
     cyme
@@ -43,11 +45,6 @@
         git = "git ";
         we = "git";
         ball = "push --force-with-lease";
-      };
-
-      programs.fzf = {
-        enable = true;
-        enableZshIntegration = true;
       };
 
       programs.zsh = {

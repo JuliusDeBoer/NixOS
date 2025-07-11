@@ -12,7 +12,7 @@
     LC_NUMERIC = "nl_NL.UTF-8";
     LC_PAPER = "nl_NL.UTF-8";
     LC_TELEPHONE = "nl_NL.UTF-8";
-    # en_DK uses YYYY-MM-DD. Which is better
+    # NOTE(Julius): en_DK uses YYYY-MM-DD. Which is better
     LC_TIME = "en_DK.UTF-8";
   };
 }

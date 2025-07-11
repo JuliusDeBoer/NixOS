@@ -8,6 +8,7 @@ let
 in
 {
   imports = with modules; [
+    de.hyprland
     de.xfce
     development
     dns
@@ -22,6 +23,7 @@ in
     stylix
     terminal
     unfree
+    wine
     zed
   ];
 
@@ -64,9 +66,14 @@ in
     pulse.enable = true;
   };
 
+  security.sudo-rs.enable = true;
+
   users.users.julius = {
     isNormalUser = true;
     description = "Julius";
+    # Security is my passion
+    # "password"
+    initialHashedPassword = "$y$j9T$VXaVt7NIKft5fsPh3xQtc.$xpISZFq9m8pe8JErb/BawJOuxStpmRcDymIBNCgwgM0";
     # NOTE(Julius): Set explicit user id for FS permissions.
     uid = 1000;
     extraGroups = [
