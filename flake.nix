@@ -49,27 +49,50 @@
       treefmt_config = (inputs.treefmt-nix.lib.evalModule pkgs ./treefmt.nix).config;
     in
     {
-      nixosConfigurations.T480 = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
+      nixosConfigurations = {
+        T480 = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hosts/T480.nix
+            inputs.stylix.nixosModules.stylix
+            inputs.spicetify-nix.nixosModules.default
+            inputs.home-manager.nixosModules.default
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  inputs.rust-overlay.overlays.default
+                  overlay
+                ];
+              }
+            )
+          ];
         };
-        inherit system;
-        modules = [
-          ./configuration.nix
-          ./hosts/T480.nix
-          inputs.stylix.nixosModules.stylix
-          inputs.spicetify-nix.nixosModules.default
-          inputs.home-manager.nixosModules.default
-          (
-            { ... }:
-            {
-              nixpkgs.overlays = [
-                inputs.rust-overlay.overlays.default
-                overlay
-              ];
-            }
-          )
-        ];
+        win = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          inherit system;
+          modules = [
+            inputs.stylix.nixosModules.stylix
+            inputs.home-manager.nixosModules.default
+            ./modules/shell.nix
+            ./modules/git.nix
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  inputs.rust-overlay.overlays.default
+                  overlay
+                ];
+              }
+            )
+          ];
+        };
       };
       formatter.${system} = treefmt_config.build.wrapper;
       checks.${system} = {

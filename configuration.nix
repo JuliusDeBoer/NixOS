@@ -133,10 +133,6 @@ in
     openssh
     bat
 
-    (rust-bin.nightly.latest.default.override {
-      targets = [ "wasm32-unknown-unknown" ];
-    })
-
     zen
   ];
 

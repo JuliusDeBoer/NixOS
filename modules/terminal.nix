@@ -30,9 +30,6 @@
         xdg.configFile."ghostty/config".text = ''
           font-family = "Iosevka Term"
           theme = "Kanagawa Dragon"
-          # NOTE(Julius): For some reason XFCE doesn't add window decorations
-          #               by itself.
-          # gtk-titlebar = false
         '';
       };
   };

@@ -33,7 +33,7 @@
             "eDP-1, 1920x1080, 0x0, 1"
           ];
 
-          exec-once = "eww daemon && eww open bar && eww open activate-linux";
+          exec-once = "eww daemon && eww open bar";
 
           bind =
             [
