@@ -27,8 +27,9 @@
     home-manager.users.julius =
       { ... }:
       {
+        # TODO(Julius): Get the font from somewhere else
         xdg.configFile."ghostty/config".text = ''
-          font-family = "Iosevka Term"
+          font-family = "Maple Mono NF"
           theme = "Kanagawa Dragon"
         '';
       };

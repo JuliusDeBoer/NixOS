@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   ...
 }:
 let
@@ -23,6 +24,7 @@ in
     stylix
     terminal
     unfree
+    waybar
     wine
     zed
   ];
@@ -90,7 +92,35 @@ in
   home-manager.users.julius =
     { pkgs, ... }:
     {
+      imports = [
+        inputs.zen-browser.homeModules.default
+      ];
+
       home.stateVersion = "24.05";
+
+      programs.zen-browser = {
+        enable = true;
+        nativeMessagingHosts = [ pkgs.firefoxpwa ];
+        policies = {
+          AutofillAddressEnabled = true;
+          AutofillCreditCardEnabled = false;
+          DisableAppUpdate = true;
+          DisableFeedbackCommands = true;
+          DisableFirefoxStudies = true;
+          DisablePocket = true;
+          DisableTelemetry = true;
+          DontCheckDefaultBrowser = true;
+          NoDefaultBookmarks = true;
+          OfferToSaveLogins = false;
+          EnableTrackingProtection = {
+            Value = true;
+            Locked = true;
+            Cryptomining = true;
+            Fingerprinting = true;
+          };
+          SearchEngines.Default = "DuckDuckGo";
+        };
+      };
 
       home.packages = with pkgs; [
         openssh
@@ -132,8 +162,6 @@ in
     git
     openssh
     bat
-
-    zen
   ];
 
   system.stateVersion = "23.05";

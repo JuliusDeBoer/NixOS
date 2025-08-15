@@ -23,8 +23,8 @@ in
       serif = config.stylix.fonts.sansSerif;
 
       monospace = {
-        package = iosevka;
-        name = "Iosevka Custom";
+        package = pkgs.maple-mono.NF;
+        name = "Maple Mono NF";
       };
 
       sizes = {

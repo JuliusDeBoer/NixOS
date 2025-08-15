@@ -18,5 +18,6 @@
     (rust-bin.nightly.latest.default.override {
       targets = [ "wasm32-unknown-unknown" ];
     })
+    rust-bin.nightly.latest.rust-analyzer
   ];
 }

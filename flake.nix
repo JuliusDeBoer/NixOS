@@ -15,7 +15,7 @@
     };
 
     zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake/6a9daeae2f8564a23db2ca9d8e4fcad1686daa51";
+      url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -36,7 +36,6 @@
 
       overlay = final: prev: {
         hellcomp = inputs.hellcomp.packages."${system}".default;
-        zen = inputs.zen-browser.packages."${system}".default;
       };
 
       pkgs = import nixpkgs {

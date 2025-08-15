@@ -6,21 +6,20 @@
 }:
 {
   programs.hyprland.enable = true;
+  # TODO(Julius): Remember why I did this.
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
-    eww
     grimblast
+    hyprlock
     playerctl
+    waybar
   ];
 
   home-manager.users.julius =
-    { pkgs, ... }:
+    { ... }:
     {
-      programs.eww = {
-        enable = true;
-        configDir = ../eww;
-      };
+      stylix.targets.hyprlock.enable = false;
 
       wayland.windowManager.hyprland = {
         enable = true;
@@ -30,41 +29,92 @@
           "$mod" = "SUPER";
 
           monitor = [
+            # TODO(Julius): Fix this
             "eDP-1, 1920x1080, 0x0, 1"
           ];
 
-          exec-once = "eww daemon && eww open bar";
+          exec-once = "waybar";
 
-          bind =
-            [
-              (lib.strings.concatStrings [
-                "$mod, Return, exec, "
-                config.global.generated.terminalExe
-              ])
-              "ALT, Space, exec, bemenu-run"
-              "$mod, F, fullscreen"
-              "$mod, Q, killactive"
-              "$mod, Space, togglefloating"
+          bind = [
+            (lib.strings.concatStrings [
+              "$mod, Return, exec, "
+              config.global.generated.terminalExe
+            ])
+            "ALT, Space, exec, bemenu-run"
+            "$mod, F, fullscreen"
+            "$mod, Q, killactive"
+            "$mod, Space, togglefloating"
 
-              "$mod, H, movefocus, l"
-              "$mod, J, movefocus, d"
-              "$mod, K, movefocus, k"
-              "$mod, L, movefocus, l"
+            "$mod, L, exec, hyprlock"
 
-              "SUPER_SHIFT, H, swapwindow, l"
-              "SUPER_SHIFT, J, swapwindow, d"
-              "SUPER_SHIFT, K, swapwindow, k"
-              "SUPER_SHIFT, L, swapwindow, l"
+            "$mod, H, movefocus, l"
+            "$mod, J, movefocus, d"
+            "$mod, K, movefocus, k"
+            "$mod, L, movefocus, l"
 
-              ", PRINT, exec, grimblast copy area"
-              "SHIFT, PRINT, exec, grimblast save area"
-            ]
-            # NOTE(Julius): This isnt pretty. But it is the easiest way of doing
-            #               it. So I dont really care.
-            ++ (builtins.map (x: "$mod, " + toString x + ", workspace, " + toString x) (lib.lists.range 1 9))
-            ++ (builtins.map (x: "SUPER_SHIFT, " + toString x + ", movetoworkspace, " + toString x) (
-              lib.lists.range 1 9
-            ));
+            "SUPER_SHIFT, H, swapwindow, l"
+            "SUPER_SHIFT, J, swapwindow, d"
+            "SUPER_SHIFT, K, swapwindow, k"
+            "SUPER_SHIFT, L, swapwindow, l"
+
+            ", PRINT, exec, grimblast copy area"
+            "SHIFT, PRINT, exec, grimblast save area"
+          ]
+          # NOTE(Julius): This isnt pretty. But it is the easiest way of doing
+          #               it. So I dont really care. (Plus its really cool)
+          ++ (builtins.map (x: "$mod, " + toString x + ", workspace, " + toString x) (lib.lists.range 1 9))
+          ++ (builtins.map (x: "SUPER_SHIFT, " + toString x + ", movetoworkspace, " + toString x) (
+            lib.lists.range 1 9
+          ));
+        };
+      };
+
+      programs.hyprlock = {
+        enable = true;
+        settings = {
+          general = {
+            disable_loading_bar = true;
+            grace = 300;
+            hide_cursor = true;
+            no_fade_in = false;
+          };
+
+          background = [
+            {
+              path = "screenshot";
+              blur_passes = 3;
+              blur_size = 8;
+            }
+          ];
+
+          input-field = [
+            {
+              size = "200, 50";
+              position = "0, -80";
+              monitor = "";
+              dots_center = true;
+              fade_on_empty = false;
+              font_color = "rgb(202, 211, 245)";
+              inner_color = "rgb(91, 96, 120)";
+              outer_color = "rgb(24, 25, 38)";
+              outline_thickness = 5;
+              placeholder_text = "Password...";
+              shadow_passes = 2;
+            }
+          ];
+
+          label = [
+            {
+              monitor = "";
+              text = "cmd[update:1000] echo \"$(date +\"%H:%M:%S\")\"";
+              color = "rgba(200, 200, 200, 1.0)";
+              font_size = 55;
+              font_family = "Geist Mono";
+              position = "0, 80";
+              halign = "center";
+              valign = "center";
+            }
+          ];
         };
       };
     };

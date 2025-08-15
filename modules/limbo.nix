@@ -5,8 +5,6 @@
 {
   pkgs,
   config,
-  boot,
-  security,
   ...
 }:
 {
@@ -25,7 +23,6 @@
     obs-studio
     pgadmin4-desktopmode
     polybar
-    rust-analyzer
     syncthing
     ticker
     wl-clipboard
