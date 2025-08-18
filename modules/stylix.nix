@@ -1,12 +1,8 @@
 { pkgs, config, ... }:
-let
-  iosevka = import ./fonts/iosevka.nix { inherit pkgs; };
-in
 {
-
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa-dragon.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
 
     cursor = {
       name = "Banana";

@@ -12,7 +12,9 @@
   environment.systemPackages = with pkgs; [
     grimblast
     hyprlock
+    hyprpaper
     playerctl
+    rofi
     waybar
   ];
 
@@ -20,6 +22,8 @@
     { ... }:
     {
       stylix.targets.hyprlock.enable = false;
+
+      programs.rofi.enable = true;
 
       wayland.windowManager.hyprland = {
         enable = true;
@@ -33,14 +37,18 @@
             "eDP-1, 1920x1080, 0x0, 1"
           ];
 
-          exec-once = "waybar";
+          exec-once = [
+            "waybar"
+            "hyprpaper"
+          ];
 
           bind = [
             (lib.strings.concatStrings [
               "$mod, Return, exec, "
               config.global.generated.terminalExe
             ])
-            "ALT, Space, exec, bemenu-run"
+            "ALT, Space, exec, rofi -show drun"
+            "ALT_SHIFT, Space, exec, rofi -show run"
             "$mod, F, fullscreen"
             "$mod, Q, killactive"
             "$mod, Space, togglefloating"
@@ -67,6 +75,12 @@
             lib.lists.range 1 9
           ));
         };
+      };
+
+      services.hyprpaper = {
+        enable = true;
+        settings.preload = [ "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
+        settings.wallpaper = [ ", ${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
       };
 
       programs.hyprlock = {

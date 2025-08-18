@@ -10,7 +10,6 @@ in
 {
   imports = with modules; [
     de.hyprland
-    de.xfce
     development
     dns
     fonts
@@ -46,6 +45,8 @@ in
       options = "--delete-older-than 7d";
     };
   };
+
+  services.displayManager.ly.enable = true;
 
   boot.tmp.cleanOnBoot = true;
 

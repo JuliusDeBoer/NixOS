@@ -8,29 +8,21 @@
           # Choose the order of the modules
           modules-left = [
             "hyprland/workspaces"
-            "hyprland/mode"
           ];
 
           modules-center = [ "custom/media" ];
 
           modules-right = [
             "custom/disk_root"
-            "temperature"
             "cpu"
+            "temperature"
             "memory"
             "network"
-            "backlight"
             "pulseaudio"
-            "clock"
             "battery"
-            "idle_inhibitor"
             "tray"
+            "clock"
           ];
-
-          # Modules configuration
-          "hyprland/mode" = {
-            format = "{}";
-          };
 
           "custom/disk_root" = {
             format = "💽 {} ";
@@ -52,16 +44,16 @@
           };
 
           cpu = {
-            format = "🏭 {usage}%";
+            format = "CPU: {usage}%";
             tooltip = false;
           };
 
           memory = {
-            format = "💾 {total:0.1f}G/{used:0.1f}G";
+            format = "{used:0.1f}G/{total:0.1f}G";
           };
 
           network = {
-            format-wifi = " {essid} {frequency} {signaldBm} dB ⇵ {bandwidthUpBits}/{bandwidthDownBits}";
+            format-wifi = " {essid} dB ⇵ {bandwidthUpBits}/{bandwidthDownBits}";
             format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
             format-linked = "{ifname} {ipaddr}";
             format-disconnected = "Disconnected ⚠";
@@ -72,8 +64,8 @@
           backlight = {
             format = "{icon} {percent}%";
             format-icons = [
-              "🔅"
-              "🔆"
+              ""
+              ""
             ];
           };
 
@@ -104,9 +96,9 @@
 
           clock = {
             interval = 1;
-            format = "⏰ {:%H:%M:%S}";
+            format = "{:%H:%M:%S}";
             tooltip-format = "{:%Y-%m-%d | %H:%M:%S}";
-            # "format-alt" = "{:%Y-%m-%d}";
+            format-alt = "{:%Y-%m-%d} {:%H:%M:%S}";
           };
 
           battery = {
@@ -134,56 +126,10 @@
           };
 
           tray = {
-            # "icon-size" = 21;
             spacing = 10;
-          };
-
-          "custom/media" = {
-            format = "{icon} {}";
-            return-type = "json";
-            max-length = 40;
-            format-icons = {
-              spotify = "";
-              default = "🎜";
-            };
-            escape = true;
-            exec = "echo 'No Media'"; # Placeholder if mediaplayer.py doesn't exist
-          };
-
-          mpd = {
-            format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
-            format-disconnected = "Disconnected ";
-            format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
-            unknown-tag = "N/A";
-            interval = 2;
-            consume-icons = {
-              on = " ";
-            };
-            random-icons = {
-              off = " ";
-              on = " ";
-            };
-            repeat-icons = {
-              on = " ";
-            };
-            single-icons = {
-              on = "1 ";
-            };
-            state-icons = {
-              paused = "";
-              playing = "";
-            };
-            tooltip-format = "MPD (connected)";
-            tooltip-format-disconnected = "MPD (disconnected)";
           };
         };
       };
     };
   };
-
-  # Install required packages for waybar modules
-  environment.systemPackages = with pkgs; [
-    pulseaudio # for pactl command
-    playerctl # for media control
-  ];
 }

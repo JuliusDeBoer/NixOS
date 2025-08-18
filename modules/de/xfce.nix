@@ -14,8 +14,6 @@ let
   cfg = config.global;
 in
 {
-  services.displayManager.ly.enable = true;
-
   # Audio stuff
   security.rtkit.enable = true;
   services.pipewire = {
