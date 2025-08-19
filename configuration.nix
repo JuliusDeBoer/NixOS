@@ -97,6 +97,8 @@ in
         inputs.zen-browser.homeModules.default
       ];
 
+      stylix.targets.zen-browser.profileNames = [ "default" ];
+
       home.stateVersion = "24.05";
 
       programs.zen-browser = {
