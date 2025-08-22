@@ -23,7 +23,7 @@ in
     stylix
     terminal
     unfree
-    waybar
+    # waybar
     wine
     zed
   ];
@@ -125,13 +125,13 @@ in
         };
       };
 
+      programs.vesktop.enable = true;
+
       home.packages = with pkgs; [
         openssh
         onefetch
 
         chromium
-
-        vesktop
 
         gimp
         inkscape

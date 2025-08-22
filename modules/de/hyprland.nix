@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  input,
   ...
 }:
 {
@@ -15,7 +16,7 @@
     hyprpaper
     playerctl
     rofi
-    waybar
+    caelestia-cli
   ];
 
   home-manager.users.julius =
@@ -42,8 +43,8 @@
           };
 
           exec-once = [
-            "waybar"
             "hyprpaper"
+            "caelestia-shell"
           ];
 
           bind = [
