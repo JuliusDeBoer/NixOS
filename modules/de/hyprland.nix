@@ -33,9 +33,13 @@
           "$mod" = "SUPER";
 
           monitor = [
-            # TODO(Julius): Fix this
-            "eDP-1, 1920x1080, 0x0, 1"
+            ", 1920x1080, 0x0, 1"
           ];
+
+          dwindle = {
+            pseudotile = true;
+            preserve_split = true;
+          };
 
           exec-once = [
             "waybar"
@@ -53,7 +57,7 @@
             "$mod, Q, killactive"
             "$mod, Space, togglefloating"
 
-            "$mod, L, exec, hyprlock"
+            "$mod, P, exec, hyprlock"
 
             "$mod, H, movefocus, l"
             "$mod, J, movefocus, d"
@@ -74,6 +78,20 @@
           ++ (builtins.map (x: "SUPER_SHIFT, " + toString x + ", movetoworkspace, " + toString x) (
             lib.lists.range 1 9
           ));
+
+          bindel = [
+            ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+            ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+            ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
+            ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+          ];
+
+          bindm = [
+            "$mod, mouse:272, movewindow"
+            "$mod, mouse:273, resizewindow"
+          ];
         };
       };
 

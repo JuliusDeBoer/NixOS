@@ -1,8 +1,34 @@
-{ pkgs, ... }:
+{ lib, config, ... }:
 {
   home-manager.users.julius = {
+    stylix.targets.waybar.enable = false;
     programs.waybar = {
       enable = true;
+      style = (
+        builtins.readFile ./waybar.css
+        + ''
+          @define-color base00 #${config.lib.stylix.colors.base00};
+          @define-color base01 #${config.lib.stylix.colors.base01};
+          @define-color base02 #${config.lib.stylix.colors.base02};
+          @define-color base03 #${config.lib.stylix.colors.base03};
+          @define-color base04 #${config.lib.stylix.colors.base04};
+          @define-color base05 #${config.lib.stylix.colors.base05};
+          @define-color base06 #${config.lib.stylix.colors.base06};
+          @define-color base07 #${config.lib.stylix.colors.base07};
+          @define-color base08 #${config.lib.stylix.colors.base08};
+          @define-color base09 #${config.lib.stylix.colors.base09};
+          @define-color base0A #${config.lib.stylix.colors.base0A};
+          @define-color base0B #${config.lib.stylix.colors.base0B};
+          @define-color base0C #${config.lib.stylix.colors.base0C};
+          @define-color base0D #${config.lib.stylix.colors.base0D};
+          @define-color base0E #${config.lib.stylix.colors.base0E};
+          @define-color base0F #${config.lib.stylix.colors.base0F};
+
+          * {
+            font-family: "${config.stylix.fonts.monospace.name}";
+          }
+        ''
+      );
       settings = {
         main = {
           # Choose the order of the modules
@@ -13,9 +39,7 @@
           modules-center = [ "custom/media" ];
 
           modules-right = [
-            "custom/disk_root"
             "cpu"
-            "temperature"
             "memory"
             "network"
             "pulseaudio"
@@ -31,10 +55,7 @@
           };
 
           temperature = {
-            # "thermal-zone" = 2;
-            # "hwmon-path" = "/sys/class/hwmon/hwmon2/temp1_input";
             critical-threshold = 80;
-            # "format-critical" = "{temperatureC}°C {icon}";
             format = "{icon} {temperatureC}°C";
             format-icons = [
               ""
@@ -53,11 +74,9 @@
           };
 
           network = {
-            format-wifi = " {essid} dB ⇵ {bandwidthUpBits}/{bandwidthDownBits}";
-            format-ethernet = "{ifname}: {ipaddr}/{cidr} ";
-            format-linked = "{ifname} {ipaddr}";
+            format-wifi = "⇵ {bandwidthUpBits}dB";
+            format-alt = "{essid}: {ipaddr}/{cidr}";
             format-disconnected = "Disconnected ⚠";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
             interval = 5;
           };
 
@@ -85,9 +104,9 @@
               portable = "";
               car = "";
               default = [
-                "🔈"
-                "🔉"
-                "🔊"
+                ""
+                ""
+                ""
               ];
             };
             on-click = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
@@ -98,20 +117,16 @@
             interval = 1;
             format = "{:%H:%M:%S}";
             tooltip-format = "{:%Y-%m-%d | %H:%M:%S}";
-            format-alt = "{:%Y-%m-%d} {:%H:%M:%S}";
           };
 
           battery = {
             states = {
-              # "good" = 95;
               warning = 20;
               critical = 10;
             };
             format = "{icon} {capacity}% ({time})";
             format-charging = "  {capacity}%";
             format-plugged = "{icon}  {capacity}% ({time})";
-            # "format-good" = ""; // An empty format will hide the module
-            # "format-full" = "";
             format-icons = [
               ""
               ""
