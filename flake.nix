@@ -27,7 +27,8 @@
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     stylix.url = "github:danth/stylix";
-    caelestia.url = "github:caelestia-dots/shell";
+    caelestia-shell.url = "github:caelestia-dots/shell";
+    caelestia-cli.url = "github:caelestia-dots/cli";
   };
 
   outputs =
@@ -37,7 +38,8 @@
 
       overlay = final: prev: {
         hellcomp = inputs.hellcomp.packages."${system}".default;
-        caelestia-cli = inputs.caelestia.packages."${system}".default;
+        caelestia-shell = inputs.caelestia-shell.packages."${system}".default;
+        caelestia-cli = inputs.caelestia-cli.packages."${system}".default;
       };
 
       pkgs = import nixpkgs {

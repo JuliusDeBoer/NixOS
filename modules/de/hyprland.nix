@@ -16,6 +16,7 @@
     hyprpaper
     playerctl
     rofi
+    caelestia-shell
     caelestia-cli
   ];
 
@@ -25,6 +26,14 @@
       stylix.targets.hyprlock.enable = false;
 
       programs.rofi.enable = true;
+
+      xdg.configFile."caelestia/shell.json".text = builtins.toJSON {
+        paths = {
+          wallpaperDir = "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}";
+        };
+      };
+      home.file.".local/state/caelestia/wallpaper/path.txt".text =
+        "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}";
 
       wayland.windowManager.hyprland = {
         enable = true;
@@ -43,9 +52,12 @@
           };
 
           exec-once = [
-            "hyprpaper"
             "caelestia-shell"
           ];
+
+          decoration = {
+            rounding = 20;
+          };
 
           bind = [
             (lib.strings.concatStrings [

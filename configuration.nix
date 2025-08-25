@@ -160,11 +160,12 @@ in
       };
     };
 
+  programs.bat.enable = true;
+
   environment.systemPackages = with pkgs; [
     wget
     git
     openssh
-    bat
   ];
 
   system.stateVersion = "23.05";
