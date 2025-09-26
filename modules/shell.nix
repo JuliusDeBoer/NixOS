@@ -21,6 +21,7 @@
     comma
     cyme
     dysk
+    eza
     fd
     file
     hellcomp
@@ -38,7 +39,9 @@
         md = "mkdir";
         c = "clear";
         q = "exit";
-        la = "ls -lha";
+        ls = "eza";
+        ll = "eza -lh --git";
+        la = "eza -lha --git";
         zedq = "zeditor . && exit";
 
         # Funny

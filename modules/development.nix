@@ -16,8 +16,15 @@
     nixd
 
     (rust-bin.nightly.latest.default.override {
-      targets = [ "wasm32-unknown-unknown" ];
+      targets = [
+        "wasm32-unknown-unknown"
+        "x86_64-unknown-linux-gnu"
+      ];
+      extensions = [
+        "rust-src"
+        "rust-std"
+        "rust-analyzer"
+      ];
     })
-    rust-bin.nightly.latest.rust-analyzer
   ];
 }

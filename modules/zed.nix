@@ -27,6 +27,11 @@
 
         lsp.rust-analyzer.binary.path = "/run/current-system/sw/bin/rust-analyzer";
 
+        diagnostics = {
+          include_warnings = true;
+          inline.enabled = true;
+        };
+
         agent.default_model = {
           model = "claude-sonnet-4";
           provider = "zed.dev";

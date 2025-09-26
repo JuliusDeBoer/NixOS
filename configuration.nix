@@ -24,7 +24,7 @@ in
     terminal
     unfree
     # waybar
-    wine
+    # wine
     zed
   ];
 

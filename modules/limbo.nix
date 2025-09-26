@@ -12,6 +12,7 @@
     blender
     btop
     calibre
+    cosmic-files
     docker
     drawio
     fastfetch
@@ -19,6 +20,7 @@
     jq
     kicad-small
     ldtk
+    networkmanagerapplet # nm-connection-editor
     nicotine-plus
     obs-studio
     pgadmin4-desktopmode
@@ -26,11 +28,15 @@
     syncthing
     ticker
     wl-clipboard
+    zathura
   ];
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;
   programs.nh.enable = true;
+
+  # NOTE(julius): Required for calibre
+  services.udisks2.enable = true;
 
   home-manager.users.julius =
     { ... }:
