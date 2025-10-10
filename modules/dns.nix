@@ -20,7 +20,7 @@
   services.resolved.enable = true;
 
   # NOTE(Julius): Maybe look into using dns over tls instead of dnscrypt?
-  services.dnscrypt-proxy2 = {
+  services.dnscrypt-proxy = {
     enable = true;
     settings = {
       ipv6_servers = true;

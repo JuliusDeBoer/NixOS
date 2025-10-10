@@ -5,37 +5,44 @@
   home-manager.users.julius =
     { ... }:
     {
-      programs.zed-editor.enable = true;
-      programs.zed-editor.userSettings = {
-        vim_mode = true;
-        auto_update = false;
+      programs.zed-editor = {
+        enable = true;
 
-        ensure_final_newline_on_save = true;
+        extensions = [
+          "discord-presence"
+        ];
 
-        project_panel.dock = "right";
+        userSettings = {
+          vim_mode = true;
+          auto_update = false;
 
-        vim.use_system_clipboard = "never";
-        relative_line_numbers = true;
-        show_edit_predictions = false;
+          ensure_final_newline_on_save = true;
 
-        telemetry = {
-          diagnostics = false;
-          metrics = false;
-        };
+          project_panel.dock = "right";
 
-        wrap_guides = [ 80 ];
+          vim.use_system_clipboard = "never";
+          relative_line_numbers = true;
+          show_edit_predictions = false;
 
-        lsp.rust-analyzer.binary.path = "/run/current-system/sw/bin/rust-analyzer";
+          telemetry = {
+            diagnostics = false;
+            metrics = false;
+          };
 
-        diagnostics = {
-          include_warnings = true;
-          inline.enabled = true;
-        };
+          wrap_guides = [ 80 ];
 
-        agent.default_model = {
-          model = "claude-sonnet-4";
-          provider = "zed.dev";
+          lsp.rust-analyzer.binary.path = "/run/current-system/sw/bin/rust-analyzer";
+
+          diagnostics = {
+            include_warnings = true;
+            inline.enabled = true;
+          };
+
+          agent.default_model = {
+            model = "claude-sonnet-4";
+            provider = "zed.dev";
+          };
         };
       };
     };
-}
+  }

@@ -12,7 +12,6 @@
     blender
     btop
     calibre
-    cosmic-files
     docker
     drawio
     fastfetch
@@ -25,8 +24,11 @@
     obs-studio
     pgadmin4-desktopmode
     polybar
+    spacedrive
     syncthing
     ticker
+    typst
+    typst-live
     wl-clipboard
     zathura
   ];

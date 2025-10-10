@@ -19,10 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hellcomp = {
-      url = "github:JuliusDeBoer/HellComp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hellcomp.url = "github:JuliusDeBoer/HellComp";
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";

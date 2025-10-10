@@ -23,8 +23,7 @@ in
     stylix
     terminal
     unfree
-    # waybar
-    # wine
+    vim
     zed
   ];
 
@@ -143,20 +142,7 @@ in
         enable = true;
         enableZshIntegration = true;
         nix-direnv.enable = true;
-      };
-
-      programs.vim = {
-        enable = true;
-        settings = {
-          number = true;
-          relativenumber = true;
-        };
-        extraConfig = "
-          set nofixeol
-          set nofixendofline
-        ";
-        # Return to monke
-        defaultEditor = true;
+        silent = true;
       };
     };
 
