@@ -19,6 +19,7 @@
     jq
     kicad-small
     ldtk
+    localsend
     networkmanagerapplet # nm-connection-editor
     nicotine-plus
     obs-studio

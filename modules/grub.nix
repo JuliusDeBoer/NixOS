@@ -3,9 +3,13 @@
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
 
+  # stylix.targets.plymouth.enable = false;
+
   # TODO(Julius): Allow hosts to choose if they want to enable OS prober
   boot = {
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+    };
     consoleLogLevel = 3;
     initrd.verbose = false;
     kernelParams = [

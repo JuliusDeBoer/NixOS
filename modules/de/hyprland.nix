@@ -2,6 +2,7 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 {
@@ -13,10 +14,9 @@
     grimblast
     hyprlock
     hyprpaper
+    inputs.noctalia.packages.${system}.default
     playerctl
     rofi
-    caelestia-shell
-    caelestia-cli
   ];
 
   services.upower.enable = true;
@@ -25,44 +25,84 @@
   home-manager.users.julius =
     { ... }:
     {
+      imports = [
+        inputs.noctalia.homeModules.default
+      ];
+
       stylix.targets.hyprlock.enable = false;
 
       programs.rofi.enable = true;
 
-      xdg.configFile."caelestia/shell.json".text = builtins.toJSON {
-        paths = {
-          wallpaperDir = "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}";
+      programs.noctalia-shell = {
+        enable = true;
+        colors = with config.lib.stylix.colors; {
+          mError = "#${base08}";
+          mOnError = "#${base00}";
+          mOnPrimary = "#${base00}";
+          mOnSecondary = "#${base00}";
+          mOnSurface = "#${base04}";
+          mOnSurfaceVariant = "#${base04}";
+          mOnTertiary = "#${base00}";
+          mOutline = "#${base02}";
+          mPrimary = "#${base0B}";
+          mSecondary = "#${base0A}";
+          mShadow = "#${base00}";
+          mSurface = "#${base00}";
+          mSurfaceVariant = "#${base01}";
+          mTertiary = "#${base0D}";
+        };
+        settings = {
+          ui = with config.stylix.fonts; {
+            fontDefault = sansSerif.name;
+            fontFixed = monospace.name;
+          };
+          bar.widgets = {
+            left = [
+              {
+                id = "SystemMonitor";
+              }
+              {
+                id = "ActiveWindow";
+              }
+              {
+                id = "MediaMini";
+                showAlbumArt = true;
+                showVisualizer = true;
+                maxWidth = 290;
+              }
+            ];
+            center = [
+              {
+                id = "Workspace";
+              }
+            ];
+            right = [
+              {
+                id = "Tray";
+              }
+              {
+                id = "NotificationHistory";
+              }
+              {
+                id = "Battery";
+                displayMode = "alwaysShow";
+              }
+              {
+                id = "Volume";
+              }
+              {
+                id = "Brightness";
+              }
+              {
+                id = "Clock";
+              }
+              {
+                id = "ControlCenter";
+              }
+            ];
+          };
         };
       };
-      home.file.".local/state/caelestia/wallpaper/path.txt".text =
-        "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}";
-
-      /* TODO(Julius): Set correct collors from Stylix
-
-      home.file.".local/state/caelestia/scheme.json".json = {
-      {
-        name = "my-custom-scheme";
-        flavour = "dark";
-        mode = "dark";
-        colours = {
-            primary = "a26387";
-            onPrimary = "511d3e";
-            primaryContainer = "6b3455";
-            onPrimaryContainer = "ffd8ea";
-            secondary = "8b6f7d";
-            onSecondary = "402a36";
-            surface = "181115";
-            onSurface = "eddfe4";
-            background = "181115";
-            onBackground = "eddfe4";
-            error = "ffb4ab";
-            onError = "690005";
-            term0 = "353434";
-            term1 = "fe45a7";
-            term15 = "ffffff";
-        };
-      };
-      */
 
       wayland.windowManager.hyprland = {
         enable = true;
@@ -81,25 +121,22 @@
           };
 
           exec-once = [
-            "caelestia-shell"
+            "noctalia-shell"
+            "hyprpaper"
           ];
-
-          decoration = {
-            rounding = 20;
-          };
 
           bind = [
             (lib.strings.concatStrings [
               "$mod, Return, exec, "
               config.global.generated.terminalExe
             ])
-            "ALT, Space, global, caelestia:launcher"
+            "ALT, Space, exec, noctalia-shell ipc call launcher toggle"
             "ALT_SHIFT, Space, exec, rofi -show run"
             "$mod, F, fullscreen"
             "$mod, Q, killactive"
             "$mod, Space, togglefloating"
 
-            "$mod, P, global, caelestia:lock"
+            "$mod, Escape, exec, noctalia-shell ipc call lockScreen lock"
 
             "$mod, H, movefocus, l"
             "$mod, J, movefocus, d"

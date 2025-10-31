@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    gh
     git
     gnupg
-    pinentry-curses
   ];
 
   home-manager.users.julius =
@@ -11,14 +11,16 @@
     {
       programs.git = {
         enable = true;
-        userName = "Julius de Boer";
-        userEmail = "45075461+JuliusDeBoer@users.noreply.github.com";
         signing = {
           key = "04491B6E0B95C939";
           signByDefault = true;
         };
-        extraConfig = {
+        settings = {
           init.defaultBranch = "master";
+          user = {
+            name = "Julius de Boer";
+            mail = "45075461+JuliusDeBoer@users.noreply.github.com";
+          };
           color = {
             diff = "auto";
             status = "auto";

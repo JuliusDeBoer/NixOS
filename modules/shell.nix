@@ -96,7 +96,7 @@
             truncate_to_repo = false;
           };
           nix_shell = {
-            format = "[$symbol( $name)]($style)";
+            format = "[$symbol($name)]($style)";
             symbol = "󱄅 ";
           };
           character = {

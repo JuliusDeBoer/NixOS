@@ -24,6 +24,11 @@
           relative_line_numbers = true;
           show_edit_predictions = false;
 
+          buffer_font_features = {
+            calt = true;
+            dlig = true;
+          };
+
           telemetry = {
             diagnostics = false;
             metrics = false;
@@ -37,12 +42,7 @@
             include_warnings = true;
             inline.enabled = true;
           };
-
-          agent.default_model = {
-            model = "claude-sonnet-4";
-            provider = "zed.dev";
-          };
         };
       };
     };
-  }
+}

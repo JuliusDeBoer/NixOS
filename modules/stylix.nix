@@ -2,7 +2,7 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/horizon-dark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
 
     cursor = {
       name = "Banana";
@@ -23,11 +23,16 @@
         name = "Maple Mono NF";
       };
 
+      emoji = {
+        package = pkgs.noto-fonts-monochrome-emoji;
+        name = "Noto Emoji";
+      };
+
       sizes = {
         applications = 11;
         desktop = 10;
         popups = 10;
-        terminal = 12;
+        terminal = 16;
       };
     };
   };

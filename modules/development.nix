@@ -27,4 +27,12 @@
       ];
     })
   ];
+
+  home-manager.users.julius =
+    { ... }:
+    {
+      xdg.configFile."pnpm/rc".text = ''
+        update-notifier=false
+      '';
+    };
 }
