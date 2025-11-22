@@ -26,13 +26,24 @@
     home-manager.users.julius =
       { ... }:
       {
-        programs.ghostty.enable = true;
+        programs.ghostty = {
+          enable = true;
+          enableZshIntegration = true;
+          settings = {
+            keybind = [ 
+              "ctrl+alt+h=goto_split:left"
+              "ctrl+alt+l=goto_split:right"
+              "ctrl+alt+k=goto_split:up"
+              "ctrl+alt+j=goto_split:down"
+            ];
+          };
+        };
 
         # TODO(Julius): Get the font from somewhere else
-        xdg.configFile."ghostty/config".text = ''
-          font-family = "Maple Mono NF"
-          theme = "Kanagawa Dragon"
-        '';
+        # xdg.configFile."ghostty/config".text = ''
+        #   font-family = "Maple Mono NF"
+        #   theme = "Kanagawa Dragon"
+        # '';
       };
   };
 }

@@ -56,6 +56,7 @@
             fontDefault = sansSerif.name;
             fontFixed = monospace.name;
           };
+          dock.enabled = false;
           bar.widgets = {
             left = [
               {
@@ -140,13 +141,13 @@
 
             "$mod, H, movefocus, l"
             "$mod, J, movefocus, d"
-            "$mod, K, movefocus, k"
-            "$mod, L, movefocus, l"
+            "$mod, K, movefocus, u"
+            "$mod, L, movefocus, r"
 
             "SUPER_SHIFT, H, swapwindow, l"
             "SUPER_SHIFT, J, swapwindow, d"
-            "SUPER_SHIFT, K, swapwindow, k"
-            "SUPER_SHIFT, L, swapwindow, l"
+            "SUPER_SHIFT, K, swapwindow, u"
+            "SUPER_SHIFT, L, swapwindow, r"
 
             ", PRINT, exec, grimblast copy area"
             "SHIFT, PRINT, exec, grimblast save area"

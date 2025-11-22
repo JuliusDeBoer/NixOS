@@ -1,13 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  programs.zsh = {
-    enable = true;
-    interactiveShellInit = ''
-      eval "$(zoxide init zsh)"
-      eval "$(atuin init zsh --disable-up-arrow)"
-    '';
-  };
+  programs.zsh.enable = true;
 
   users.users.julius = {
     packages = [ pkgs.zsh ];
@@ -50,10 +44,33 @@
         ball = "push --force-with-lease";
       };
 
+      programs.zoxide = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+
+      programs.atuin = {
+        enable = true;
+        enableZshIntegration = true;
+        flags = ["--disable-up-arrow"];
+        daemon.enable = true;
+      };
+
       programs.zsh = {
         enable = true;
-        initContent = "${pkgs.hellcomp}/bin/hellcomp";
+        syntaxHighlighting.enable = true;
         historySubstringSearch.enable = true;
+        initContent = lib.mkOrder 1500 "${pkgs.hellcomp}/bin/hellcomp";
+        # NOTE(Julius): Neatly stolen from:
+        #               <https://scottspence.com/posts/speeding-up-my-zsh-shell>
+        completionInit = ''
+          autoload -Uz compinit
+          if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
+            compinit
+          else
+            compinit -C
+          fi
+        '';
         plugins = [
           {
             name = "zsh-nix-shell";
@@ -74,7 +91,7 @@
         settings = {
           format =
             "$username@$hostname"
-            + "( [\\($git_branch( $git_state)( $git_metrics)\\)](purple))"
+            + "( [\\($git_branch( $git_state)($git_metrics)\\)](purple))"
             + "( [\\($nix_shell\\)](blue))"
             + "\n$directory$character";
           username = {

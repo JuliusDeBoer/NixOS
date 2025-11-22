@@ -18,12 +18,26 @@
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hellcomp.url = "github:JuliusDeBoer/HellComp";
-
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    treefmt-nix.url = "github:numtide/treefmt-nix";
-    stylix.url = "github:danth/stylix";
+    hellcomp = {
+      url = "github:JuliusDeBoer/HellComp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    lb = {
+      url = "github:JuliusDeBoer/LB";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     quickshell = {
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,6 +56,7 @@
 
       overlay = final: prev: {
         hellcomp = inputs.hellcomp.packages."${system}".default;
+        lb = inputs.lb.packages."${system}".default;
         caelestia-shell = inputs.caelestia-shell.packages."${system}".default;
         caelestia-cli = inputs.caelestia-cli.packages."${system}".default;
       };

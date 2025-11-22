@@ -24,11 +24,6 @@
           relative_line_numbers = true;
           show_edit_predictions = false;
 
-          buffer_font_features = {
-            calt = true;
-            dlig = true;
-          };
-
           telemetry = {
             diagnostics = false;
             metrics = false;

@@ -12,27 +12,33 @@
     blender
     btop
     calibre
+    cloc
     docker
-    drawio
     fastfetch
+    glow
     godot_4
     jq
     kicad-small
-    ldtk
+    lb
     localsend
+    mariadb
     networkmanagerapplet # nm-connection-editor
     nicotine-plus
+    nmap
     obs-studio
     pgadmin4-desktopmode
-    polybar
     spacedrive
     syncthing
+    thunderbird
     ticker
     typst
-    typst-live
     wl-clipboard
+    yaak
     zathura
   ];
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
 
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true;

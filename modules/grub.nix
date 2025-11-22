@@ -27,7 +27,17 @@
   };
 
   # Theme
-  # stylix.targets.grub.enable = false;
+  stylix.targets.grub.enable = false;
+
+  # Sayonara
+  boot.loader.grub.theme = "${
+    pkgs.fetchFromGitHub {
+      owner = "samoht9277";
+      repo = "dotfiles";
+      rev = "55455eec2c2df83be5373b1095915bb7086b1dab";
+      hash = "sha256-HwGD9DDYd4+Bt4eXvxlYbLEU6ueZ271Gd94PH+zwkkY=";
+    }
+  }/grub/themes/sayonara";
 
   # YoRHa theme
   # boot.loader.grub.theme = "${
