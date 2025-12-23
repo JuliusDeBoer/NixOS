@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [ zed-editor ];
+  environment.systemPackages = with pkgs; [
+    zed-editor
+    television
+  ];
 
   home-manager.users.julius =
     { ... }:
@@ -31,13 +34,61 @@
 
           wrap_guides = [ 80 ];
 
-          lsp.rust-analyzer.binary.path = "/run/current-system/sw/bin/rust-analyzer";
+          lsp.rust-analyzer = {
+            binary.path = "/run/current-system/sw/bin/rust-analyzer";
+            initialization_options.check.command = "clippy";
+          };
 
           diagnostics = {
             include_warnings = true;
             inline.enabled = true;
           };
         };
+
+        userTasks = [
+          {
+            label = "Television File Finder";
+            command = "zeditor \"$(tv files)\"";
+            hide = "always";
+            allow_concurrent_runs = true;
+            use_new_terminal = true;
+          }
+          {
+            label = "Television RipGrep";
+            command = "zeditor \"$(tv text)\"";
+            hide = "always";
+            allow_concurrent_runs = true;
+            use_new_terminal = true;
+          }
+        ];
+
+        userKeymaps = [
+          {
+            context = "vim_mode == normal && extension == toml";
+            bindings."\\ w" = [
+              "workspace::SendKeystrokes"
+              "0 f \" i { space version space = space escape $ a , space features space = space [ ] space } escape F ] i"
+            ];
+          }
+          {
+            bindings = {
+              "ctrl-p" = [
+                "task::Spawn"
+                {
+                  task_name = "Television File Finder";
+                  reveal_target = "center";
+                }
+              ];
+              "ctrl-shift-p" = [
+                "task::Spawn"
+                {
+                  task_name = "Television RipGrep";
+                  reveal_target = "center";
+                }
+              ];
+            };
+          }
+        ];
       };
     };
 }

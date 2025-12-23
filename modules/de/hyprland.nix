@@ -14,13 +14,14 @@
     grimblast
     hyprlock
     hyprpaper
-    inputs.noctalia.packages.${system}.default
+    noctalia
     playerctl
     rofi
   ];
 
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
+
 
   home-manager.users.julius =
     { ... }:
@@ -29,33 +30,21 @@
         inputs.noctalia.homeModules.default
       ];
 
-      stylix.targets.hyprlock.enable = false;
-
       programs.rofi.enable = true;
+
+      stylix.targets = {
+        hyprlock.enable = false;
+        noctalia-shell.enable = true;
+      };
 
       programs.noctalia-shell = {
         enable = true;
-        colors = with config.lib.stylix.colors; {
-          mError = "#${base08}";
-          mOnError = "#${base00}";
-          mOnPrimary = "#${base00}";
-          mOnSecondary = "#${base00}";
-          mOnSurface = "#${base04}";
-          mOnSurfaceVariant = "#${base04}";
-          mOnTertiary = "#${base00}";
-          mOutline = "#${base02}";
-          mPrimary = "#${base0B}";
-          mSecondary = "#${base0A}";
-          mShadow = "#${base00}";
-          mSurface = "#${base00}";
-          mSurfaceVariant = "#${base01}";
-          mTertiary = "#${base0D}";
-        };
         settings = {
           ui = with config.stylix.fonts; {
             fontDefault = sansSerif.name;
             fontFixed = monospace.name;
           };
+          wallpaper.enabled = false;
           dock.enabled = false;
           bar.widgets = {
             left = [
@@ -112,8 +101,17 @@
         settings = {
           "$mod" = "SUPER";
 
+          general = {
+            layout = "dwindle";
+            border_size = 0;
+          };
+
+          decoration = {
+            rounding = 8;
+          };
+
           monitor = [
-            ", 1920x1080, 0x0, 1"
+            ", prefered, auto, 1"
           ];
 
           dwindle = {
@@ -133,7 +131,8 @@
             ])
             "ALT, Space, exec, noctalia-shell ipc call launcher toggle"
             "ALT_SHIFT, Space, exec, rofi -show run"
-            "$mod, F, fullscreen"
+            "$mod, F, fullscreen, 0"
+            "$mod, M, fullscreen, 1"
             "$mod, Q, killactive"
             "$mod, Space, togglefloating"
 
@@ -181,8 +180,10 @@
 
       services.hyprpaper = {
         enable = true;
-        settings.preload = [ "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
-        settings.wallpaper = [ ", ${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
+        settings = {
+          preload = [ "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
+          wallpaper = [ ", ${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
+        };
       };
 
       programs.hyprlock = {

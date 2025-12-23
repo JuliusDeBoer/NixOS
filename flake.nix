@@ -45,7 +45,6 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
   };
 
@@ -57,8 +56,7 @@
       overlay = final: prev: {
         hellcomp = inputs.hellcomp.packages."${system}".default;
         lb = inputs.lb.packages."${system}".default;
-        caelestia-shell = inputs.caelestia-shell.packages."${system}".default;
-        caelestia-cli = inputs.caelestia-cli.packages."${system}".default;
+        noctalia = inputs.noctalia.packages.${system}.default;
       };
 
       pkgs = import nixpkgs {

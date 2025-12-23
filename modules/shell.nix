@@ -19,6 +19,7 @@
     fd
     file
     hellcomp
+    joshuto
     p7zip
     ripgrep
     tlrc
@@ -52,7 +53,7 @@
       programs.atuin = {
         enable = true;
         enableZshIntegration = true;
-        flags = ["--disable-up-arrow"];
+        flags = [ "--disable-up-arrow" ];
         daemon.enable = true;
       };
 

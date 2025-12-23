@@ -1,8 +1,11 @@
 { pkgs, config, ... }:
+let
+  iosevka = import ./fonts/iosevka.nix { inherit pkgs; };
+in
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/black-metal.yaml";
 
     cursor = {
       name = "Banana";
@@ -19,8 +22,8 @@
       serif = config.stylix.fonts.sansSerif;
 
       monospace = {
-        package = pkgs.maple-mono.NF;
-        name = "Maple Mono NF";
+        package = iosevka;
+        name = "Iosevka Custom";
       };
 
       emoji = {

@@ -9,31 +9,22 @@
 }:
 {
   environment.systemPackages = with pkgs; [
-    blender
+    bacon
     btop
     calibre
     cloc
     docker
     fastfetch
     glow
-    godot_4
     jq
-    kicad-small
     lb
     localsend
     mariadb
-    networkmanagerapplet # nm-connection-editor
     nicotine-plus
     nmap
-    obs-studio
-    pgadmin4-desktopmode
-    spacedrive
-    syncthing
     thunderbird
-    ticker
     typst
     wl-clipboard
-    yaak
     zathura
   ];
 

@@ -30,7 +30,7 @@
           enable = true;
           enableZshIntegration = true;
           settings = {
-            keybind = [ 
+            keybind = [
               "ctrl+alt+h=goto_split:left"
               "ctrl+alt+l=goto_split:right"
               "ctrl+alt+k=goto_split:up"
