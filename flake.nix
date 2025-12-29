@@ -46,6 +46,8 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
@@ -78,6 +80,30 @@
           modules = [
             ./configuration.nix
             ./hosts/T480.nix
+            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-t480
+            inputs.stylix.nixosModules.stylix
+            inputs.spicetify-nix.nixosModules.default
+            inputs.home-manager.nixosModules.default
+            (
+              { ... }:
+              {
+                nixpkgs.overlays = [
+                  inputs.rust-overlay.overlays.default
+                  overlay
+                ];
+              }
+            )
+          ];
+        };
+        framework = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs;
+          };
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hosts/framework.nix
+            inputs.nixos-hardware.nixosModules.framework-amd-ai-300-series
             inputs.stylix.nixosModules.stylix
             inputs.spicetify-nix.nixosModules.default
             inputs.home-manager.nixosModules.default

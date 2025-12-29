@@ -61,7 +61,7 @@
         enable = true;
         syntaxHighlighting.enable = true;
         historySubstringSearch.enable = true;
-        initContent = lib.mkOrder 1500 "${pkgs.hellcomp}/bin/hellcomp";
+        initContent = lib.mkOrder 1500 "if [[ $- == *i* ]]; then ${pkgs.hellcomp}/bin/hellcomp; fi";
         # NOTE(Julius): Neatly stolen from:
         #               <https://scottspence.com/posts/speeding-up-my-zsh-shell>
         completionInit = ''

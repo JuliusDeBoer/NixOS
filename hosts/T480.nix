@@ -11,20 +11,6 @@
 
   networking.hostName = "T480";
 
-  hardware.graphics = {
-    enable = true;
-  };
-
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "nvme"
-    "usb_storage"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
   fileSystems."/mnt/Antimony" = {
     device = "/dev/disk/by-label/Antimony";
     fsType = "ntfs";
