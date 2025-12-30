@@ -111,6 +111,7 @@
           };
 
           monitor = [
+            "eDP-1, prefered, auto, 1.5"
             ", prefered, auto, 1"
           ];
 
