@@ -19,7 +19,7 @@
           init.defaultBranch = "master";
           user = {
             name = "Julius de Boer";
-            mail = "45075461+JuliusDeBoer@users.noreply.github.com";
+            email = "45075461+JuliusDeBoer@users.noreply.github.com";
           };
           color = {
             diff = "auto";
