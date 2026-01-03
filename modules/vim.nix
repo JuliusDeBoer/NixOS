@@ -13,13 +13,17 @@
           ale
           nerdtree
           typst-vim
-          vim-fugitive
           vim-airline
           vim-airline-themes
+          vim-fugitive
         ];
         extraConfig = "
           set cc=80
           let g:airline_theme='distinguished'
+          augroup GitCommitSettings
+            autocmd!
+            autocmd FileType gitcommit set cc=50,72
+          augroup END
         ";
         # Return to monke
         defaultEditor = true;
