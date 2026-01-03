@@ -34,14 +34,16 @@
 
           wrap_guides = [ 80 ];
 
-          lsp.rust-analyzer = {
-            binary.path = "/run/current-system/sw/bin/rust-analyzer";
-            initialization_options.check.command = "clippy";
-          };
+          languages.Rust.wrap_guides = [ 100 ];
 
           diagnostics = {
             include_warnings = true;
             inline.enabled = true;
+          };
+
+          lsp.rust-analyzer = {
+            binary.path = "/run/current-system/sw/bin/rust-analyzer";
+            initialization_options.check.command = "clippy";
           };
         };
 
