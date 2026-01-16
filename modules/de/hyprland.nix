@@ -11,6 +11,7 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   environment.systemPackages = with pkgs; [
+    brightnessctl
     grimblast
     hyprlock
     hyprpaper
@@ -21,7 +22,6 @@
 
   services.upower.enable = true;
   services.power-profiles-daemon.enable = true;
-
 
   home-manager.users.julius =
     { ... }:
@@ -130,6 +130,13 @@
               "$mod, Return, exec, "
               config.global.generated.terminalExe
             ])
+
+            (lib.strings.concatStrings [
+              "$mod, P, exec, "
+              config.global.generated.terminalExe
+              " -e sh -c \\\"zeditor $(ls $HOME/src --absolute | tv -p \\\"onefetch {}\\\")\\\""
+            ])
+
             "ALT, Space, exec, noctalia-shell ipc call launcher toggle"
             "ALT_SHIFT, Space, exec, rofi -show run"
             "$mod, F, fullscreen, 0"
@@ -159,13 +166,20 @@
             lib.lists.range 1 9
           ));
 
+          bindl = [
+            ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+            ", XF86AudioPlay, exec, playerctl play-pause"
+            ", XF86AudioNext, exec, playerctl next"
+            ", XF86AudioPrev, exec, playerctl previous"
+          ];
+
           bindel = [
             ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
             ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
             ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             ", XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-            ", XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-            ", XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+            ", XF86MonBrightnessUp, exec, brightnessctl set +5%"
+            ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
           ];
 
           bindm = [

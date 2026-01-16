@@ -9,24 +9,36 @@
 }:
 {
   environment.systemPackages = with pkgs; [
+    android-file-transfer
     bacon
     btop
     calibre
     cloc
     docker
     fastfetch
+    feh
     glow
     jq
     lb
     localsend
     mariadb
+    metabase
     nicotine-plus
     nmap
+    onlyoffice-desktopeditors
+    rsync
     thunderbird
     typst
     wl-clipboard
     zathura
   ];
+
+  networking.firewall = {
+    enable = true;
+    # NOTE(Julius): Allow for LocalSend
+    allowedTCPPorts = [ 53317 ];
+    allowedUDPPorts = [ 53317 ];
+  };
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;

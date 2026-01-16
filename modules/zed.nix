@@ -24,7 +24,7 @@
           project_panel.dock = "right";
 
           vim.use_system_clipboard = "never";
-          relative_line_numbers = true;
+          relative_line_numbers = "enabled";
           show_edit_predictions = false;
 
           telemetry = {

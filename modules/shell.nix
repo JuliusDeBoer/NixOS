@@ -34,10 +34,8 @@
         md = "mkdir";
         c = "clear";
         q = "exit";
-        ls = "eza";
-        ll = "eza -lh --git";
-        la = "eza -lha --git";
-        zedq = "zeditor . && exit";
+        ll = "ls -lh --git";
+        la = "ls -lha --git";
 
         # Funny
         git = "git ";
@@ -61,6 +59,10 @@
         enable = true;
         syntaxHighlighting.enable = true;
         historySubstringSearch.enable = true;
+        shellAliases = {
+          ls = "eza";
+          zedq = "zeditor . && exit";
+        };
         initContent = lib.mkOrder 1500 "if [[ $- == *i* ]]; then ${pkgs.hellcomp}/bin/hellcomp; fi";
         # NOTE(Julius): Neatly stolen from:
         #               <https://scottspence.com/posts/speeding-up-my-zsh-shell>
@@ -84,6 +86,11 @@
             };
           }
         ];
+      };
+
+      programs.carapace = {
+        enable = true;
+        enableZshIntegration = true;
       };
 
       programs.starship = {
