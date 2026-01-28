@@ -196,8 +196,10 @@
       services.hyprpaper = {
         enable = true;
         settings = {
-          preload = [ "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
-          wallpaper = [ ", ${../../assets/a_building_with_people_sitting_on_a_bench.jpg}" ];
+          wallpaper = {
+            monitor = "";
+            path = "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}";
+          };
         };
       };
 
