@@ -40,6 +40,11 @@
     allowedUDPPorts = [ 53317 ];
   };
 
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "julius" ];
+  # HACK(Julius)
+  boot.kernelParams = [ "kvm.enable_virt_at_load=0" ];
+
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.login.enableGnomeKeyring = true;
 

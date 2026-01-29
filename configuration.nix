@@ -56,7 +56,7 @@ in
   # TODO(Julius): Move bluetooth stuff to a seperate file
   hardware.bluetooth = {
     enable = true;
-    powerOnBoot = true;
+    powerOnBoot = false;
   };
   services.blueman.enable = true;
 
