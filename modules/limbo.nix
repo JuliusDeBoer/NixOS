@@ -10,7 +10,10 @@
 {
   environment.systemPackages = with pkgs; [
     android-file-transfer
+    jetbrains.pycharm
     bacon
+    micropython
+    python313
     btop
     calibre
     cloc
@@ -19,6 +22,7 @@
     feh
     glow
     jq
+    jujutsu
     lb
     localsend
     mariadb
@@ -29,6 +33,7 @@
     rsync
     thunderbird
     typst
+    wireshark
     wl-clipboard
     zathura
   ];
@@ -39,6 +44,7 @@
     allowedTCPPorts = [ 53317 ];
     allowedUDPPorts = [ 53317 ];
   };
+
 
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "julius" ];
@@ -62,6 +68,16 @@
         [theme]
         selected = dark
       '';
+
+      programs.jujutsu = {
+        enable = true;
+        settings = {
+          user = {
+            name = "Julius de Boer";
+            email = "me@juliusdeboer.com";
+          };
+        };
+      };
     };
 
   boot.extraModulePackages = with config.boot.kernelPackages; [

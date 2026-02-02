@@ -6,6 +6,7 @@
     builtins.elem (lib.getName pkg) [
       "discord"
       "drawio"
+      "pycharm"
       "spotify"
       "steam"
       "steam-original"

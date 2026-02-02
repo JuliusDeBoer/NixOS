@@ -16,6 +16,8 @@
           vim-airline
           vim-airline-themes
           vim-fugitive
+          vim-surround
+          YouCompleteMe
         ];
         extraConfig = "
           set cc=80

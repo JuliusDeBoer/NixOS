@@ -196,9 +196,10 @@
       services.hyprpaper = {
         enable = true;
         settings = {
+          splash = false;
           wallpaper = {
             monitor = "";
-            path = "${../../assets/a_building_with_people_sitting_on_a_bench.jpg}";
+            path = "${../../assets/framework.png}";
           };
         };
       };
